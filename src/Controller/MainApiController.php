@@ -20,6 +20,13 @@ class MainApiController extends AbstractController
         $okpd = $this->_getOkpd($request->query->get('CTE'));
         $ktruArray = $this->_getKtru($okpd);
 
+        if (!count($ktruArray))
+        {
+
+            array_push($ktruArray, [$okpd]);
+
+        }
+
         return $this->json([
 
             $okpd, $ktruArray
